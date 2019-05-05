@@ -46,12 +46,7 @@ public class PlayerActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(count > 0) {
-                    bPlay.setEnabled(true);
-                }
-                else {
-                    bPlay.setEnabled(false);
-                }
+                bPlay.setEnabled(count > 0);
             }
 
             @Override
@@ -60,27 +55,24 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
-        bPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch(etPlayerName.getText().toString()){
-                    case "SAWS":
-                        Paper.book().write(String.valueOf(R.id.ibMuhammad), true);
-                        Toast.makeText(PlayerActivity.this, "Congrats !", Toast.LENGTH_SHORT).show();
-                        break;
-                    case "Salât":
-                        Paper.book().write(String.valueOf(R.id.ibSalat), true);
-                        Toast.makeText(PlayerActivity.this, "Congrats !", Toast.LENGTH_SHORT).show();
-                        break;
-                    case "Quran":
-                        Paper.book().write(String.valueOf(R.id.ibQuran), true);
-                        Toast.makeText(PlayerActivity.this, "Congrats !", Toast.LENGTH_SHORT).show();
-                        break;
-                    case "reset":
-                        Paper.book().destroy();
-                        Toast.makeText(PlayerActivity.this, "Reset.", Toast.LENGTH_SHORT).show();
-                        break;
-                }
+        bPlay.setOnClickListener(v -> {
+            switch(etPlayerName.getText().toString()){
+                case "SAWS":
+                    Paper.book().write(String.valueOf(R.id.ibMuhammad), true);
+                    Toast.makeText(PlayerActivity.this, "Congrats !", Toast.LENGTH_SHORT).show();
+                    break;
+                case "Salât":
+                    Paper.book().write(String.valueOf(R.id.ibSalat), true);
+                    Toast.makeText(PlayerActivity.this, "Congrats !", Toast.LENGTH_SHORT).show();
+                    break;
+                case "Quran":
+                    Paper.book().write(String.valueOf(R.id.ibQuran), true);
+                    Toast.makeText(PlayerActivity.this, "Congrats !", Toast.LENGTH_SHORT).show();
+                    break;
+                case "reset":
+                    Paper.book().destroy();
+                    Toast.makeText(PlayerActivity.this, "Reset.", Toast.LENGTH_SHORT).show();
+                    break;
             }
         });
     }
